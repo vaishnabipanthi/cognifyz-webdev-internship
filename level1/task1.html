@@ -1,0 +1,229 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cognifyz.com</title>
+    <style>
+
+*{
+    box-sizing: border-box;
+}
+    body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+   background-color: white
+}
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: white;
+    color: black;
+}
+    
+.header-left{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.header-right {
+      display: flex;
+      align-items: center;
+      gap: 26px; 
+    
+    }
+    .header-right:hover{
+        color: rgb(185, 8, 37);
+    }
+.logo-img{
+  width:200px;
+}
+.brand-text .tagline{
+    margin: 0;
+    font-size: 14px;
+    color:#666;
+
+
+}
+
+
+  
+.content{
+    max-width: 900px;
+   margin: 0;
+   padding: 0;
+   margin-left: 40px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+}
+    .content p{
+        margin:0;
+        padding: 0;
+    }
+.Myform{
+  width: 650px;
+  margin: 40px 0 100px 20px;
+  padding: 25px 30px;
+  border-radius: 12px;
+  background: white;
+  box-shadow:2px solid 5c2d91;}
+
+.Myform label{
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        font-size: 15px;
+     }
+.Myform input{
+    width: 100%;
+    padding: 12px 14px;
+    border-radius: 6px;
+    border:1px solid #666;
+    font-size: 14;
+    outline: none;
+    background-color: white;
+    color:black;
+}
+.Myform button{
+     margin-top:15px;
+    padding:10px 25px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: #5c2d91;
+    color: white;
+    font-weight: 600;}
+
+    .Myform button:hover{
+        opacity: 0.9;
+        
+    }
+
+    .card{
+        width: 650;
+        margin: 20px 0 60px 20px;
+        padding: 20px 25px;
+        border-radius: 5px solid black;
+        background-color: white;  
+    }
+    .btn-small{
+        padding: 8px 18px ;
+        border: none;
+        border-radius: 20px;
+        background-color:rgb(119, 46, 119);
+        color: white;
+        cursor: pointer;
+        font-size: 14px;
+        margin-top: 6px;
+    }
+    .btn-small:hover {
+        opacity: 0.9;
+    }
+    .calc-input{
+        width: 180px;
+        padding: 8px 10px;
+        border-radius: 5px solid black;
+        font-size:14px;
+        margin: 6px 6px 6px 0;
+    }
+</style>
+
+
+ </head>
+ <body>
+    <!--Taks 1 here -->
+    <header class="navbar">
+        <div class="header-left">
+            <img src="logo.png" alt="Cognifyz logo" class="logo-img">
+            <div class="brand-text">
+                 <h1>Cognifyz Technologies</h1>
+                 <p class="tagline">Empowering Futures, Transforming Careers</p>
+            </div>
+        </div>
+   <div class="header-right">
+   <a href="home">Home</a>
+   <a href="about">About</a>
+   <a href="about">Contact</a>
+    </header>
+<main class="content" id="home">
+    <p>
+    Cognifyz Technologies is committed to providing industry‑oriented training and internship opportunities.
+    Through structured learning and real‑world projects, we help learners build practical skills.
+    </p>
+</main>
+      <form class="Myform" id="simpleForm">
+        <input type="text" id="message" placeholder="Feel Free For Any Query/Question">
+        <button type="submit">Submit</button>
+      </form>
+
+       <!--Taks 2 here button color chnage -->
+       <div class="card">
+        <h3>
+            Change my Color
+            </h3>
+            <button id="colorBtn" class="btn-small">click Me</button>
+       <h3>Simple calculator</h3>
+        <!--Taks 2 calculator -->
+        <input type="number" id="num1" class="calc-input" placeholder="Enter First Number">
+        <input type="number" id="num2" class="calc-input" placeholder="Enter Second Number">
+        <button id="calcBtn" class="btn-small">Add</button>
+        <p>Result: <span id="result">0</span></p>
+
+       </div>
+       <!--javascript section here -->
+       <script>
+        // form submitted button alert box
+        const form = document.getElementById('simpleForm');
+        form.addEventListener('submit',function (event)
+    {
+        event.preventDefault();
+        alert('Form Submitted');
+    });
+    //button color change
+    const colorBtn= document.getElementById('colorBtn');
+    let isPurple =true;
+    colorBtn.addEventListener('click', function(){
+        if (isPurple){
+            colorBtn.style.backgroundColor = 'tomato';
+
+        } else {
+            colorBtn.style.backgroundColor = '#5c2d91';
+        }
+        isPurple=!isPurple;
+    });
+    function showGreeting(){
+        const hour=new Date().getHours();
+        let message;
+
+        if (hour<12)
+        {
+            message= 'Good Morning';
+        }
+        else if (hour<18)
+        {
+             message= 'Good Afternoon';
+        }
+        else
+        {
+            message= ' Good Evening';
+        }
+        alert(message);
+    }
+    showGreeting();
+    // calculator
+    const calcBtn=document.getElementById('calcBtn');
+    calcBtn.addEventListener('click',function() {
+        const n1 = parseFloat(document.getElementById('num1').value);
+         const n2 = parseFloat(document.getElementById('num2').value);
+         const sum = n1 +n2;
+         document.getElementById('result').textContent = isNaN(sum) ? 'Enter Both Number' :sum;
+    });
+
+
+       </script>
+      </body>
+
+</html>
